@@ -215,4 +215,13 @@ public class Example {
         return stackTraceElements[2].getMethodName();
     }
 
+ /**визначаємо тип обєкта */
+    public static void printObjectType(Object o) {
+        if (o instanceof Cat) System.out.println("Кошка");
+    }
+    public static class Cat {
+    }
+
+
+
 }
