@@ -20,7 +20,11 @@ public class Example {
     String q = reader.readLine();
     int f = Integer.parseInt(q);
     double e = Double.parseDouble(q);
-
+    /** міняємо малі букви на великі */
+    public void toUpperCase() {
+        String s = "hfhf";
+        s = s.toUpperCase();
+    }
     public Example() throws IOException {
     }
     /** вираховує парне і не парне число механізм слідуючий
@@ -60,7 +64,6 @@ public class Example {
         }
         else System.out.println("Треугольник существует.");
     }
-
     /**порівняння довжини двох строк*/
     public static void  comparison(String name1, String name2) {
         if (name1.equals(name2)) System.out.println("Имена идентичны");
@@ -196,8 +199,7 @@ public class Example {
         }
     }
     /**Stack Trace*/
-    public static String method1()
-    {
+    public static String method1() {
         // method2();
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
         /**отримує назву метода який викликав даний метод */
@@ -214,7 +216,6 @@ public class Example {
         }
         return stackTraceElements[2].getMethodName();
     }
-
  /**визначаємо тип обєкта */
     public static void printObjectType(Object o) {
         if (o instanceof Cat) System.out.println("Кошка");
