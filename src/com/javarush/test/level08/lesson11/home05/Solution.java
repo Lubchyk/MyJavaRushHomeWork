@@ -22,15 +22,7 @@ public class Solution
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String s = reader.readLine();
-        String[] s1;
-        String h = " ";
-
-//        for (int i = 0; i < 3; i++) {
-//
-//        }
-//
-
-        s1 = s.split(h + h); // розбиває строку на декілька
+        String s1[] = s.split("\\s+"); // розбиває строку на декілька
 
         String bk1 = s1[0].substring(0, 1); // копіює вказаний символ із строки
         String bk2 = s1[1].substring(0, 1); // копіює вказаний символ із строки
@@ -44,19 +36,6 @@ public class Solution
         bk3 = bk3.toUpperCase();
 
         System.out.println(bk1 + sl1 + " " + bk2 + sl2 + " " + bk3 + sl3);
-
-
-//
-//        char[] c = new char[20];
-//        s1[0].getChars(0, s1[0].length(),  c, 0);
-//
-//        String b1 = String.valueOf(c[0]);
-//        String b2 = String.valueOf();
-//        String b3 = String.valueOf();
-//        String e = String.valueOf(c);
-//        System.out.println(e);
-
-        //напишите тут ваш код
     }
 
 

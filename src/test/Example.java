@@ -186,6 +186,7 @@ public class Example {
             Map.Entry<String, String> pair = iterator.next();
             System.out.println(pair.getKey() + " - " + pair.getValue());
         }
+        for (Map.Entry<String, String> pair : var.entrySet()) { /* ... */ }
     }
     /** приклад колекції SET */
     public void hashSet() {
