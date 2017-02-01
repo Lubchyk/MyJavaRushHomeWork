@@ -224,6 +224,67 @@ public class Example {
     public static class Cat {
     }
 
+    /**при вводі такої фрази пише всі перші букви із великої букви "  мама     мыла раму." */
+    public static void firstLetterToUpper() throws IOException
+    {
+        List<String> space = new ArrayList<String>();
+        String countSpace = "";
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String s = reader.readLine();
+        char[] arr = s.toCharArray(); // переносимо строку в масив символів
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == ' ') { // шукаємо пробіли
+                for (int j = i; j < arr.length; j++) { // рахуємо скільки пробілів є підряд
+                    if (arr[i] != ' ') break;
+                    countSpace = countSpace + " ";
+                    i++;
+                }
+            }
+            if (!countSpace.equals("")) {// записуємо пробіли в їх кількості в список
+                space.add(countSpace);
+                countSpace = "";
+            }
+        }
+        s = s.trim();
+        String s1[] = s.split("\\s+"); // розбиває строку на декілька розділяє якщо знаходить в строці пробіл(и)
+        String bk1 = s1[0].substring(0, 1); // копіює вказаний символ із строки
+        String bk2 = s1[1].substring(0, 1); // копіює вказаний символ із строки
+        String bk3 = s1[2].substring(0, 1); // копіює вказаний символ із строки
+        String sl1 = s1[0].substring(1, s1[0].length());
+        String sl2 = s1[1].substring(1, s1[1].length());
+        String sl3 = s1[2].substring(1, s1[2].length());
+        bk1 = bk1.toUpperCase(); // переводить з малої до великої
+        bk2 = bk2.toUpperCase(); // переводить з малої до великої
+        bk3 = bk3.toUpperCase(); // переводить з малої до великої
+        if (space.size() == 2) System.out.println(bk1 + sl1 + space.get(0) + bk2 + sl2 + space.get(1) + bk3 + sl3);
+        //склеюємо першу велику букву строки + решта строки + склеюємо якщо пробіли повторюються 3 раза
+        if (space.size() == 3)
+            System.out.println(space.get(0) + bk1 + sl1 + space.get(1) + bk2 + sl2 + space.get(2) + bk3 + sl3);
+        //склеюємо першу велику букву строки + решта строки + якщо пробіли повторюються 4 раза
+        if (space.size() == 4)
+            System.out.println(space.get(0) + bk1 + sl1 + space.get(1) + bk2 + sl2 + space.get(2) + bk3 + sl3 + space.get(3));
+    }
+    /**то саме що на один вище, але більш точно*/
+    public static void firstLetterToUpperMethod2() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String s = reader.readLine();
+
+        boolean upDone = false; // если увеличили первый символ слова
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ' ' && upDone) {
+                upDone = false;
+                continue;
+            }
+            if (s.charAt(i) == ' ')
+                continue;
+            if (s.charAt(i) != ' ' && !upDone) {
+                s = s.substring(0, i) + ((s.substring(i, i + 1)).toUpperCase()) + s.substring(i + 1);
+                upDone = true;
+            }
+        }
+        System.out.println(s);
+    }
 
 
 }
