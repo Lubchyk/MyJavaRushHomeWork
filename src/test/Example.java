@@ -3,6 +3,7 @@ package test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -285,6 +286,36 @@ public class Example {
         }
         System.out.println(s);
     }
+    /**сортування слів у масиві по алфавіту */
+    public static void sort(String[] array) {
+        String[] alphabet = new String[] {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"} ;
+        int count = 0;
+        for (int i = 0; i <alphabet.length ; i++) {
+            for (int j = 0; j < array.length; j++) {
+
+                String a = String.valueOf(array[j].charAt(0)); //витягує перший символ із строки в масиві
+
+                if (alphabet[i].equalsIgnoreCase(a)) {
+
+                    String temp = array[count];         //сортує
+
+                    array[count] = array[j];
+                    array[j] = temp;
+                    count++;
+                }
+            }
+        }
+    }
+    // http://study-java.ru/uroki-java/urok-11-sortirovka-massiva/   - як сортувати масиви
+    /**те саме що і на один вище, але системний метод*/
+    public Array sort(Array array) {
+        Arrays.sort(new Array[]{array});
+        return array;
+    }
+
+
+
+
 
 
 }

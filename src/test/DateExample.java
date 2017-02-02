@@ -1,6 +1,8 @@
 package test;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by АНТ on 01.02.2017.
@@ -10,36 +12,36 @@ public class DateExample {
         isDateOdd("JANUARY 2 2020");
     }
 
-    public static boolean isDateOdd(String date) {
-        long msDay = 24 * 60 * 60 * 1000;
-
-        Date yearBigan = new Date(date);
-
-        long nextYaer = yearBigan.getYear();
-        int year = (int) nextYaer;
+/**рахує скільки днів пройшло від початку року до вказаного числа*/
+    public static boolean isDateOdd(String date)
+    {
+        long msDay = 24 * 60 * 60 * 1000; // = число при діленні на яке отримуємо кількість днів
 
         Date yearEnd = new Date(date);
-        yearEnd.setHours(0);
-        yearEnd.setMinutes(0);
-        yearEnd.setSeconds(0);
-        yearEnd.setDate(0);
-        yearEnd.setMonth(0);
-        yearEnd.setYear(year);
 
-        long year1 = yearBigan.getTime();
-        long year2 = yearEnd.getTime();
-        long period = year1 - year2;
+        long nextYaer = yearEnd.getYear(); // беремо потрібний нам рік
+        int year = (int) nextYaer;
 
-        int dayCount = ((int) (period / msDay));
+        Date yearBigan = new Date(date);
+        yearBigan.setHours(0);
+        yearBigan.setMinutes(0); // встановлення часу вручну
+        yearBigan.setSeconds(0);
+        yearBigan.setDate(0);
+        yearBigan.setMonth(0);
+        yearBigan.setYear(year);
 
+        long year1End = yearEnd.getTime(); //бере час початку року
+        long year1Bigan = yearBigan.getTime(); //бере час вказаної дати
+        long period = year1End - year1Bigan; // отримуємо правильний період
+        int dayCount = ((int) (period / msDay)); // вираховує скільки днів в періоді
         System.out.println(dayCount);
-        boolean resalt = update(dayCount);
-        System.out.println(resalt);
-        return resalt;
+        return true;
     }
-    static boolean update(int a) {
-        int b = a % 2;
-        if (b == 1) return true;
-        else return false;
+    /**показує дату у вказаному форматі, але дата свого формату не міняє*/
+    public void dateformat(String date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM d, yyyy", Locale.US);//вказання фомату і локалізацію
+        Date date1 = new Date(date);
+        System.out.println(simpleDateFormat.format(date1));
     }
+
 }
