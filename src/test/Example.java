@@ -312,9 +312,24 @@ public class Example {
         Arrays.sort(new Array[]{array});
         return array;
     }
+    /** метод передує, яка строка передує (тобто сортує строки за алфавітом)*/
+    public static boolean isGreaterThan(String a, String b) {
+        return a.compareTo(b) > 0;
+    }
 
-
-
+    /**вираховує чи строка число*/
+    public static boolean isNumber(String s) {
+        if (s.length() == 0) return false;
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            if ((i != 0 && c == '-') //есть '-' внутри строки
+                    || (!Character.isDigit(c) && c != '-') ) // не цифра и не начинается с '-'
+            {
+                return false;  }
+        }
+        return true;
+    }
 
 
 

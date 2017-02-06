@@ -1,5 +1,8 @@
 package test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -43,5 +46,28 @@ public class DateExample {
         Date date1 = new Date(date);
         System.out.println(simpleDateFormat.format(date1));
     }
+
+    public static void fileCopy() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        String sourceFileName = reader.readLine();
+        String destinationFileName = reader.readLine();
+
+        java.io.FileInputStream fileInputStream = new java.io.FileInputStream(sourceFileName);
+        java.io.FileOutputStream fileOutputStream = new java.io.FileOutputStream(destinationFileName);
+
+        int count = 0;
+        while (fileInputStream.available()>0) {
+            int data = fileInputStream.read();
+            fileOutputStream.write(data);
+            count++;
+        }
+        System.out.println("Скопировано байт " + count);
+        fileInputStream.close();
+        fileOutputStream.close();
+    }
+
+
+
 
 }
